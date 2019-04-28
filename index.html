@@ -1,0 +1,39 @@
+<!DOCTYPE html >
+<html >
+<head>
+<script>
+var imgs = [];
+count = 0;
+function loadDoc() {
+	var xhttp = new XMLHttpRequest();
+	var imgs=[];
+	xhttp.onreadystatechange = function(){
+		if(this.status==200){
+            imgs = (this.responseText).split(",");
+            document.getElementById("demo").innerHTML = (this.responseText).split(",").join("<br>");
+            document.title = (this.responseText).search("Expanse");
+            count++;
+			 for (var i = 0; i <imgs.length;i++){
+                 console.log(imgs[i]);
+			 }
+            console.log(count);
+		}
+	};
+	xhttp.open("Get","https://intramural-oxide.000webhostapp.com/pics.txt",true);
+    xhttp.send();	
+}
+
+</script>
+
+</head>
+
+<body>
+<div>
+	<h2 id = "demo">Let Ajax change this text</h2>
+    <button type = "button" onclick="loadDoc()">Change content</button>
+    
+</div><!--end of container -->
+
+</body>
+
+</html>
